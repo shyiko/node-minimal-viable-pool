@@ -1,0 +1,26 @@
+{
+  "name": "minimal-viable-pool",
+  "description": "Minimal viable pool for Node.js",
+  "version": "0.1.0",
+  "author": "Stanley Shyiko <stanley.shyiko@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shyiko/node-minimal-viable-pool"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "semistandard && ./node_modules/mocha/bin/mocha -R spec"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "semistandard": "^7.0.4"
+  },
+  "semistandard": {
+    "globals": [ "describe", "it" ]
+  },
+  "keywords": [
+    "pool"
+  ]
+}
