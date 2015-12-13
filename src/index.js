@@ -19,11 +19,11 @@ Pool.prototype.remove = function (resource) {
  * @param cb(err, resource)
  */
 Pool.prototype.acquire = function (cb) {
-  var resource = this.resources.values().next().value;
-  if (resource) {
-    this.resources.delete(resource);
-    this.acquiredResources.add(resource);
-    return process.nextTick(cb.bind(null, null, resource));
+  var it = this.resources.values().next();
+  if (!it.done) {
+    this.resources.delete(it.value);
+    this.acquiredResources.add(it.value);
+    return process.nextTick(cb.bind(null, null, it.value));
   }
   var e = {cb: cb};
   e.timeoutId = setTimeout(function () {

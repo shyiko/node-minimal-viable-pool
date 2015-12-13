@@ -78,6 +78,15 @@ describe('Pool', function () {
         done();
       });
     });
+    it('should not timeout on resources that evaluate to false', function (done) {
+      var pool = new Pool({acquireTimeout: 0});
+      pool.add(0);
+      pool.acquire(function (err, obj) {
+        expect(err).to.not.exist;
+        expect(obj).to.be.equal(0);
+        done();
+      });
+    });
   });
   describe('#release()', function () {
     it('should release resource back to the pool', function (done) {
