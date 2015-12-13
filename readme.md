@@ -52,7 +52,7 @@ interface Pool<T> {
 
 ## Usage
 
-```sh
+```js
 var server = ... 
 var io = ...
 var Pool = require('pool');
