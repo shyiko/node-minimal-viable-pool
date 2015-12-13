@@ -59,7 +59,7 @@ var Pool = require('pool');
 
 var poolOfSockets = new Pool({acquireTimeout: 30000});
 
-io.on('connection', (socket) { 
+io.on('connection', function (socket) { 
   poolOfSockets.add(socket);
   socket.on('disconnect', function () { poolOfSockets.remove(socket); });
 });
@@ -80,7 +80,7 @@ server.get('/', function (req, res, next) {
       poolOfSockets.release(socket);
       clearTimeout(timeout);
       res.json(result);            
-    };
+    }
     
     socket.once('job-completed', onJobCompleted);
     socket.emit('start-job');
